@@ -20,11 +20,6 @@ class VideosActivity : BaseActivity<ActivityVideosBinding, PlayListViewModel>() 
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_videos)
-    }
-
     override fun initListener() {
         super.initListener()
         val resultIntent = intent.getStringExtra("id")

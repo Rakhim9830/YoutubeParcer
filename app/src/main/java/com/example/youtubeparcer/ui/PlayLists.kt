@@ -21,7 +21,7 @@ private lateinit var adapter: PlayListsAdapter
 
     override fun isConnection() {
         super.isConnection()
-        var connection = Connection(application)
+        val connection = Connection(application)
         connection.observe(this){isConnected->
             if (isConnected){
                 binding.rvPlaylist.visibility = View.VISIBLE

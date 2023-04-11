@@ -4,6 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.VideosActivity">
+    tools:context=".ui.details.VideosActivity">
+
+    <FrameLayout
+        android:id="@+id/no_inet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <include
+            layout="@layout/no_internet_connection"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

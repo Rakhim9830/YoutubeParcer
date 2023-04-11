@@ -1,4 +1,4 @@
-package com.example.youtubeparcer.model
+package com.example.youtubeparcer.data.remote.model
 
 data class PlayList(
     val etag: String,

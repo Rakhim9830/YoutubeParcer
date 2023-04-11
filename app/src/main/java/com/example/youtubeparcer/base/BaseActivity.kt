@@ -32,4 +32,6 @@ abstract class BaseActivity <VB: ViewBinding, VM:BaseViewModel>: AppCompatActivi
     open fun initViews(){}
 
     open fun initRecycleView(){}
+
+
 }

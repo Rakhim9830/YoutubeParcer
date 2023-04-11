@@ -1,19 +1,17 @@
-package com.example.youtubeparcer.adapter
+package com.example.youtubeparcer.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.youtubeparcer.databinding.PlaylistItemBinding
-import com.example.youtubeparcer.model.Item
-import com.example.youtubeparcer.model.PlayList
+import com.example.youtubeparcer.data.remote.model.Item
 import com.example.youtubeparcer.setImage
 
 class PlayListsAdapter(private val onClick: (Item) -> Unit): RecyclerView.Adapter<PlayListsAdapter.PlayListViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(lists:List<Item>){
+    fun setData(lists:List<Item>){
         this.myDataList = lists as ArrayList<Item>
         notifyDataSetChanged()
     }
@@ -24,7 +22,7 @@ class PlayListsAdapter(private val onClick: (Item) -> Unit): RecyclerView.Adapte
         @SuppressLint("SetTextI18n")
         fun bind(item: Item){
            binding.namePlaylist.text = item.snippet.title
-           binding.videos.text = "${item.contentDetails.itemCount} + video series"
+           binding.videos.text = "${item.contentDetails.itemCount} video series"
            binding.playlist.setImage(item.snippet.thumbnails.default.url)
            binding.container.setOnClickListener{
                onClick.invoke(item)

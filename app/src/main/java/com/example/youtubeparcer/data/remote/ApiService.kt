@@ -1,6 +1,6 @@
-package com.example.youtubeparcer.remote
+package com.example.youtubeparcer.data.remote
 
-import com.example.youtubeparcer.model.PlayList
+import com.example.youtubeparcer.data.remote.model.PlayList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

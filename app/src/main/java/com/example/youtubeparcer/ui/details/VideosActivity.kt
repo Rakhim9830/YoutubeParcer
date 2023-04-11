@@ -1,13 +1,10 @@
-package com.example.youtubeparcer.ui
+package com.example.youtubeparcer.ui.details
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.youtubeparcer.R
 import com.example.youtubeparcer.base.BaseActivity
 import com.example.youtubeparcer.databinding.ActivityVideosBinding
+import com.example.youtubeparcer.ui.PlayListViewModel
 
 class VideosActivity : BaseActivity<ActivityVideosBinding, PlayListViewModel>() {
 

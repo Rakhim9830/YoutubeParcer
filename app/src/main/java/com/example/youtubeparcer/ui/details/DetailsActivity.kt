@@ -1,5 +1,6 @@
 package com.example.youtubeparcer.ui.details
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,14 +8,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.youtubeparcer.base.BaseActivity
 import com.example.youtubeparcer.core.network.connection.Connection
+import com.example.youtubeparcer.data.remote.model.Item
 import com.example.youtubeparcer.databinding.ActivityVideosBinding
 import com.example.youtubeparcer.ui.PlayListViewModel
 
 class DetailsActivity : BaseActivity<ActivityVideosBinding, DetailsVIewModel>() {
    private lateinit var adapter: DetailsAdapter
-
+  private val data = arrayListOf<Item>()
    private val id:String?
    get() = intent.getStringExtra(ID)
+
+
 
     override val viewModel: DetailsVIewModel by lazy {
         ViewModelProvider(this)[DetailsVIewModel::class.java]
@@ -34,26 +38,39 @@ class DetailsActivity : BaseActivity<ActivityVideosBinding, DetailsVIewModel>() 
 
     }
 
+    override fun initViews() {
+        super.initViews()
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
+    }
+
     override fun initViewModel() {
         super.initViewModel()
         setItemList()
+
     }
     private fun setItemList(){
         id?.let { id->
             viewModel.itemList(id).observe(this){
                 binding.videosRv.layoutManager = LinearLayoutManager(this)
                 adapter = DetailsAdapter()
-                binding.videosRv.adapter = adapter
                 adapter.setList(it.items)
+                binding.videosRv.adapter = adapter
+
             }
         }
     }
 
     override fun initListener() {
         super.initListener()
-        binding.btnBack.setOnClickListener {
-            finish()
-        }
+        val title = intent.getStringExtra(TITLE)
+        val desc = intent.getStringExtra(DESC)
+        val count = intent.getStringExtra(COUNT)
+        binding.tvTitle.text = title
+        binding.tvDesc.text = desc
+
     }
 
     override fun inflateViewBinding(): ActivityVideosBinding {
@@ -61,6 +78,9 @@ class DetailsActivity : BaseActivity<ActivityVideosBinding, DetailsVIewModel>() 
     }
     companion object{
         const val ID = "id"
+        const val TITLE = "title"
+        const val DESC = "desc"
+        const val COUNT = "count"
     }
 }
 

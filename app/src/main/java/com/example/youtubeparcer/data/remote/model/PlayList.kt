@@ -32,6 +32,13 @@ data class Item(
     val snippet: Snippet
 )
 
+data class Page(
+val id:String,
+val title: String,
+val description: String,
+val itemcount: Int
+):java.io.Serializable
+
 data class Localized(
     val description: String,
     val title: String

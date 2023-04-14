@@ -9,10 +9,13 @@ import com.example.youtubeparcer.core.network.result.Status
 import com.example.youtubeparcer.databinding.ActivityMainBinding
 import com.example.youtubeparcer.data.remote.model.Item
 import com.example.youtubeparcer.data.remote.model.Localized
+import com.example.youtubeparcer.data.remote.model.Page
 import com.example.youtubeparcer.ui.details.DetailsActivity
+import java.text.FieldPosition
 
 class PlayLists() : BaseActivity<ActivityMainBinding, PlayListViewModel>() {
 private lateinit var adapter: PlayListsAdapter
+
 
     override val viewModel: PlayListViewModel by lazy {
         ViewModelProvider(this)[PlayListViewModel::class.java]
@@ -71,11 +74,17 @@ private lateinit var adapter: PlayListsAdapter
 
     fun onClick(item: Item){
         val intent = Intent(this@PlayLists, DetailsActivity::class.java)
+        intent.putExtra(TITLE, item.snippet.title)
         intent.putExtra(ID, item.id)
+        intent.putExtra(DESC, item.snippet.description)
+        intent.putExtra(COUNT, item.contentDetails.itemCount)
         startActivity(intent)
     }
     companion object{
         const val ID = "id"
+        const val TITLE = "title"
+        const val DESC = "desc"
+        const val COUNT = "count"
     }
 
 }

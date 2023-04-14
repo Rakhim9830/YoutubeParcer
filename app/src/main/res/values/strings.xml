@@ -5,4 +5,10 @@
     <string name="text">Text</string>
     <string name="videos">videos</string>
     <string name="playlist">playlist</string>
+    <string name="playlist2">Playlist</string>
+    <string name="back">Back</string>
+    <string name="button">button</string>
+    <string name="videoseries">videoSeries</string>
+    <string name="title">title</string>
+    <string name="time">time</string>
 </resources>

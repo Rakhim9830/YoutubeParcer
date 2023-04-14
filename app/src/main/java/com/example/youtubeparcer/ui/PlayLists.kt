@@ -2,15 +2,14 @@ package com.example.youtubeparcer.ui
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.youtubeparcer.base.BaseActivity
-import com.example.youtubeparcer.base.BaseViewModel
 import com.example.youtubeparcer.core.network.connection.Connection
 import com.example.youtubeparcer.core.network.result.Status
 import com.example.youtubeparcer.databinding.ActivityMainBinding
 import com.example.youtubeparcer.data.remote.model.Item
-import com.example.youtubeparcer.ui.details.VideosActivity
+import com.example.youtubeparcer.data.remote.model.Localized
+import com.example.youtubeparcer.ui.details.DetailsActivity
 
 class PlayLists() : BaseActivity<ActivityMainBinding, PlayListViewModel>() {
 private lateinit var adapter: PlayListsAdapter
@@ -71,13 +70,17 @@ private lateinit var adapter: PlayListsAdapter
     }
 
     fun onClick(item: Item){
-        val intent = Intent(this@PlayLists, VideosActivity::class.java)
-        intent.putExtra("id", item.snippet.title)
-        Toast.makeText(this, item.snippet.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@PlayLists, DetailsActivity::class.java)
+        intent.putExtra(ID, item.id)
         startActivity(intent)
+    }
+    companion object{
+        const val ID = "id"
     }
 
 }
+
+
 
 
 
